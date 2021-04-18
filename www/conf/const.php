@@ -1,6 +1,6 @@
 <?php
-
-//定数ファイル(コンスタント)
+//定数定義ファイル(コンスタント)
+//define(定数名, 値)
 
 define('MODEL_PATH', $_SERVER['DOCUMENT_ROOT'] . '/../model/');//ドキュメントルート
 define('VIEW_PATH', $_SERVER['DOCUMENT_ROOT'] . '/../view/');
@@ -10,7 +10,7 @@ define('IMAGE_PATH', '/assets/images/');//画像ファイル
 define('STYLESHEET_PATH', '/assets/css/');//CSSファイル
 define('IMAGE_DIR', $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' );//
 
-//DB接続情報
+//DB接続情報}
 define('DB_HOST', 'mysql');
 define('DB_NAME', 'sample');
 define('DB_USER', 'testuser');
@@ -37,8 +37,8 @@ define('USER_PASSWORD_LENGTH_MIN', 6);
 define('USER_PASSWORD_LENGTH_MAX', 100);
 
 //管理者　ユーザー
-define('USER_TYPE_ADMIN', 1);
-define('USER_TYPE_NORMAL', 2);
+define('USER_TYPE_ADMIN', 1);//管理者
+define('USER_TYPE_NORMAL', 2);//ユーザー
 
 //商品名の長さ
 define('ITEM_NAME_LENGTH_MIN', 1);//商品名最小値
