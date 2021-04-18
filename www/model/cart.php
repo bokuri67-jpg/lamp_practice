@@ -84,7 +84,7 @@ function insert_cart($db, $user_id, $item_id, $amount = 1){
   return execute_query($db, $sql, array($item_id, $user_id, $amount));
 }
 
-//カート内の数量変更
+//カート内の数量変更(SQLインジェクション対策実装済み)
 function update_cart_amount($db, $cart_id, $amount){
   $sql = "
     UPDATE
