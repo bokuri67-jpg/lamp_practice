@@ -16,6 +16,8 @@
       <div class="form-group">
         <label for="name">名前: </label>
         <input type="text" name="name" id="name" class="form-control">
+        <!-- 生成したトークンの送信 -->
+        <input type='hidden' name='csrf_token' value='<?php print $token; ?>'>
       </div>
       <div class="form-group">
         <label for="password">パスワード: </label>
@@ -26,6 +28,8 @@
         <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
       </div>
       <input type="submit" value="登録" class="btn btn-primary">
+      <!-- 生成したトークンの送信 -->
+      <input type='hidden' name='csrf_token' value='<?php print $token; ?>'>
     </form>
   </div>
 </body>

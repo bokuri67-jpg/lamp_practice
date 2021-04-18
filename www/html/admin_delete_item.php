@@ -1,6 +1,9 @@
 <?php
 //商品削除
 
+//iframeによるサイト読み込み防止
+header('X-FRAME-OPTIONS: DENY');
+
 // 定数ファイルを読み込み
 require_once '../conf/const.php';
 // 汎用関数ファイルを読み込み
@@ -33,7 +36,7 @@ $item_id = get_post('item_id');
 if(destroy_item($db, $item_id) === true){
   set_message('商品を削除しました。');
 } else {
-  set_error('商品削除に失敗しました。');
+  set_error('商品削除に失敗しました。'.$e);
 }
 
 
