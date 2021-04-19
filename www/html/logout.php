@@ -1,4 +1,8 @@
 <?php
+//ログアウト
+
+//iframeによるサイト読み込み防止
+header('X-FRAME-OPTIONS: DENY');
 
 //定数ファイルを読み込み
 require_once '../conf/const.php';
