@@ -13,7 +13,8 @@ CREATE TABLE oder_history (
 //購入明細画面
 CREATE TABLE item_details (
   order_id INT,
-  product_id INT,
+  item_id INT,
+  price INT,
   amount INT DEFAULT 0
 );
 ?>
