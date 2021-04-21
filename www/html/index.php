@@ -1,4 +1,5 @@
 <?php
+//トップページ？？
 
 // 定数ファイルを読み込み
 require_once '../conf/const.php';
@@ -19,7 +20,7 @@ if(is_logined() === false){
 
 //DB接続
 $db = get_db_connect();
-//ログインユーザー情報取得
+//ログインチェック
 $user = get_login_user($db);
 
 //商品情報を取得

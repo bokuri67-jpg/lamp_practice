@@ -6,7 +6,7 @@ require_once MODEL_PATH . 'functions.php';
 //DB操作ファイルを読み込み
 require_once MODEL_PATH . 'db.php';
 
-//カート内の商品情報を取得し、　へ返す？？？
+//カート内の商品情報を取得し、SQL実行の関数へ渡す
 function get_user_carts($db, $user_id){
   $sql = "
     SELECT

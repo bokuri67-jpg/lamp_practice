@@ -20,7 +20,7 @@ function get_get($name){
   return '';
 }
 
-//POSTで受け取ったとき、受け取った値を返す
+//POSTで受け取ったとき、受け取った受け取った値を返す
 function get_post($name){
   if(isset($_POST[$name]) === true){
     return $_POST[$name];

@@ -11,7 +11,7 @@ CREATE TABLE oder_history (
 
 
 //購入明細画面
-CREATE TABLE item_details (
+CREATE TABLE order_details (
   order_id INT,
   item_id INT,
   price INT,
