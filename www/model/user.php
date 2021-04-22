@@ -59,7 +59,7 @@ function ($db){
   return get_user($db, $login_user_id);
 }
 
-//登録済みユーザーかどうか
+//登録済みかどうか
 function regist_user($db, $name, $password, $password_confirmation) {
   if( is_valid_user($name, $password, $password_confirmation) === false){
     return false;
