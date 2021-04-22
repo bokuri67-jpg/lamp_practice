@@ -122,3 +122,4 @@ function insert_user($db, $name, $password){
 
   return execute_query($db, $sql);
 }
+
