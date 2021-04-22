@@ -6,7 +6,7 @@ require_once MODEL_PATH . 'functions.php';
 //DB操作ファイルを読み込み
 require_once MODEL_PATH . 'db.php';
 
-//カート情報を表示
+//カート内の商品を表示
 function get_user_carts($db, $user_id){
   $sql = "
     SELECT
@@ -31,7 +31,7 @@ function get_user_carts($db, $user_id){
   return fetch_all_query($db, $sql);
 }
 
-//？？？
+//カートへ追加された商品を表示
 function get_user_cart($db, $user_id, $item_id){
   $sql = "
     SELECT
@@ -60,7 +60,7 @@ function get_user_cart($db, $user_id, $item_id){
 
 }
 
-//
+//カート内に同じ商品がなければカートへ追加、同じ商品があれば数量を更新
 function add_cart($db, $user_id, $item_id ) {
   $cart = get_user_cart($db, $user_id, $item_id);
   if($cart === false){
@@ -111,12 +111,12 @@ function delete_cart($db, $cart_id){
   return execute_query($db, $sql);
 }
 
-//商品購入
+//商品購入  (ここへ課題２のSQLを追加)
 function purchase_carts($db, $carts){
   if(validate_cart_purchase($carts) === false){
     return false;
   }
-  //ストック数より購入数が多い場合「購入失敗」にする
+  //在庫数より購入数が多い場合「購入失敗」にする
   foreach($carts as $cart){
     if(update_item_stock(
         $db, 
@@ -171,3 +171,4 @@ function validate_cart_purchase($carts){
   return true;
 }
 
+//

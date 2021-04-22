@@ -17,7 +17,7 @@ function get_db_connect(){
   return $dbh;
 }
 
-//（SQL文~準備~実行~）レコードを取得し、値を返す
+//（SQL文~準備~実行~）一つのレコードを取得し、値を返す
 function fetch_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);
