@@ -171,4 +171,30 @@ function validate_cart_purchase($carts){
   return true;
 }
 
-//
+
+//下記は　order.php　を作成してそこへ記載すべき？
+
+//購入履歴テーブル(order_history)へ追加
+function insert_order_history($db, $user_id){
+  $sql = "
+    INSERT INTO order_history (
+      user_id
+    )
+    VALUE (?)
+  ";
+  return execute_query($db, $sql, array($user_id));
+}
+
+//購入明細テーブル(order_details)へ追加
+function insert_order_details($db, $order_id, $item_id, $price, $amount){
+  $sql = "
+    INSERT INTO order_details (
+      order_id,
+      item_id,
+      price,
+      amount
+      )
+    VALUE(?,?,?,?)
+  ";
+  return execute_query($db, $sql, array($order_id, $item_id, $price, $amount));
+}
