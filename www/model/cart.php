@@ -6,7 +6,7 @@ require_once MODEL_PATH . 'functions.php';
 //DB操作ファイルを読み込み
 require_once MODEL_PATH . 'db.php';
 
-//カート内の商品情報を取得し、SQL実行の関数へ渡す
+//カート情報を表示
 function get_user_carts($db, $user_id){
   $sql = "
     SELECT
@@ -84,7 +84,7 @@ function insert_cart($db, $user_id, $item_id, $amount = 1){
   return execute_query($db, $sql);
 }
 
-//カート内の数量変更
+//カート内の数量を更新
 function update_cart_amount($db, $cart_id, $amount){
   $sql = "
     UPDATE
