@@ -224,7 +224,7 @@ function get_order_details($db, $order_id){
       items.name,
       order_details.price,
       order_details.amount,
-      order_history.order_id,
+      order_details.order_id,
       order_details.price*order_details.amount as subtotal
     FROM
       order_details
