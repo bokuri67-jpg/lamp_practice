@@ -1,6 +1,9 @@
 <?php
 //商品在庫変更
 
+//iframeによるサイト読み込み防止
+header('X-FRAME-OPTIONS: DENY');
+
 // 定数ファイルを読み込み
 require_once '../conf/const.php';
 // 汎用関数ファイルを読み込み
