@@ -125,23 +125,20 @@ function purchase_carts($db, $carts){
       set_error($cart['name'] . 'の購入に失敗しました。');
     }
   } 
-  //購入商品の情報を取得
-  foreach($carts as $cart){
-    $item_id = $cart['item_id'];
-    $price   = $cart['price'];
-    $amount  = $cart['amount'];
+  foreach($carts as $cart) {
     $user_id = $cart['user_id'];
   }
-  
   //トランザクション処理
   try{
     $db->beginTransaction();
     //購入履歴テーブルへ追加
-    insert_order_history($db, $user_id);
+      insert_order_history($db, $user_id);
     //lastinsertidを使って$order_idを取得する
     $order_id = $db->lastinsertId('order_id');
     //商品詳細テーブルへ追加
-    insert_order_details($db, $order_id, $item_id, $price, $amount);
+    foreach($carts as $cart){
+      insert_order_details($db, $order_id, $cart['item_id'], $cart['price'], $cart['amount']);
+    }
     //購入可能であれば、カートテーブルから商品を削除する
     delete_user_carts($db, $carts[0]['user_id']);
     $db->commit();
