@@ -18,9 +18,9 @@ if(is_logined() === false){
   redirect_to(LOGIN_URL);
 }
 
-//DB接続
+//DB情報を取得
 $db = get_db_connect();
-//ログインチェック
+//ユーザー情報を取得
 $user = get_login_user($db);
 
 //商品情報を取得

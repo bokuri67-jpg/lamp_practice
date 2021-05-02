@@ -17,12 +17,14 @@ session_start();
 if(is_logined() === false){
   redirect_to(LOGIN_URL);
 }
-// MySQL用のDSN文字列
+// DB情報を取得
 $db = get_db_connect();
-//ログイン済みユーザーかどうか
+//ログイン情報を取得
 $user = get_login_user($db);
-//カート内の商品情報を出力
+//カート情報を取得
 $carts = get_user_carts($db, $user['user_id']);
+
+
 //カート内の合計金額を返す。
 $total_price = sum_carts($carts);
 

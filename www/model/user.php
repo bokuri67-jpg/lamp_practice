@@ -53,13 +53,13 @@ function login_as($db, $name, $password){
 }
 
 //ログイン済みユーザーかどうか
-function ($db){
+function get_login_user($db){
   $login_user_id = get_session('user_id');
 
   return get_user($db, $login_user_id);
 }
 
-//登録済みかどうかチェック
+//登録済みユーザーかどうか
 function regist_user($db, $name, $password, $password_confirmation) {
   if( is_valid_user($name, $password, $password_confirmation) === false){
     return false;
