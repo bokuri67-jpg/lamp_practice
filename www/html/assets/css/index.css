@@ -2,3 +2,10 @@
   margin-top: 10px;
 }
 
+.item_image {
+  height: 50px;
+}
+
+li{
+  float:left;
+}

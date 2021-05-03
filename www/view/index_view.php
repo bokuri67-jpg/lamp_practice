@@ -41,6 +41,14 @@
       <?php } ?>
       </div>
     </div>
+
+      <?php foreach($rankings as $ranking) { ?>
+      <ul>
+        <li><img src="<?php print (IMAGE_PATH). $ranking['image']; ?>" class="item_image"></li>
+        <li><?php print $ranking['name']; ?></li>
+      </ul>
+      <?php } ?>
+
   </div>
   
 </body>

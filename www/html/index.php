@@ -26,5 +26,8 @@ $user = get_login_user($db);
 //商品情報を取得
 $items = get_open_items($db);
 
+//ランキング用の情報取得
+$rankings = get_ranking($db);
+
 //index_viewファイルの読み込み
 include_once VIEW_PATH . 'index_view.php';
