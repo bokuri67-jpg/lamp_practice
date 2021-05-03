@@ -21,6 +21,8 @@
       enctype="multipart/form-data"
       class="add_item_form col-md-6">
       <div class="form-group">
+        <!-- 生成したトークンの送信 -->
+        <input type='hidden' name='csrf_token' value='<?php print $token; ?>'>
         <label for="name">名前: </label>
         <input class="form-control" type="text" name="name" id="name">
       </div>
@@ -63,7 +65,7 @@
           <?php foreach($items as $item){ ?>
           <tr class="<?php print(is_open($item) ? '' : 'close_item'); ?>">
             <td><img src="<?php print(IMAGE_PATH . $item['image']);?>" class="item_image"></td>
-            <!-- XSS処理は下記 -->
+            <!-- XSS処理 h関数 -->
             <td><?php print h($item['name']); ?></td>
             <td><?php print(number_format($item['price'])); ?>円</td>
             <td>
@@ -75,6 +77,8 @@
                 </div>
                 <input type="submit" value="変更" class="btn btn-secondary">
                 <input type="hidden" name="item_id" value="<?php print($item['item_id']); ?>">
+                <!-- 生成したトークンの送信 -->
+                <input type='hidden' name='csrf_token' value='<?php print $token; ?>'>
               </form>
             </td>
             <td>
@@ -88,11 +92,15 @@
                   <input type="hidden" name="changes_to" value="open">
                 <?php } ?>
                 <input type="hidden" name="item_id" value="<?php print($item['item_id']); ?>">
+                <!-- 生成したトークンの送信 -->
+                <input type='hidden' name='csrf_token' value='<?php print $token; ?>'>
               </form>
 
               <form method="post" action="admin_delete_item.php">
                 <input type="submit" value="削除" class="btn btn-danger delete">
                 <input type="hidden" name="item_id" value="<?php print($item['item_id']); ?>">
+                <!-- 生成したトークンの送信 -->
+                <input type='hidden' name='csrf_token' value='<?php print $token; ?>'>
               </form>
 
             </td>

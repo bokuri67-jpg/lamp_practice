@@ -43,6 +43,7 @@ function fetch_all_query($db, $sql, $params = array()){
 
 //実行結果を、返す
 function execute_query($db, $sql, $params = array()){
+
   try{
     $statement = $db->prepare($sql);
     return $statement->execute($params);

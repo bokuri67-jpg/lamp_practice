@@ -21,10 +21,10 @@ function get_item($db, $item_id){
     FROM
       items
     WHERE
-      item_id = {$item_id}
+      item_id = ?
   ";
 
-  return fetch_query($db, $sql);
+  return fetch_query($db, $sql, array($item_id));
 }
 
 //公開中の、商品情報を、すべて取得し、値を返す
@@ -79,7 +79,9 @@ function regist_item_transaction($db, $name, $price, $stock, $status, $image, $f
   
 }
 
+
 //商品追加
+
 function insert_item($db, $name, $price, $stock, $filename, $status){
   $status_value = PERMITTED_ITEM_STATUSES[$status];
   $sql = "
@@ -91,10 +93,10 @@ function insert_item($db, $name, $price, $stock, $filename, $status){
         image,
         status
       )
-    VALUES('{$name}', {$price}, {$stock}, '{$filename}', {$status_value});
+    VALUES(?,?,?,?,?);
   ";
 
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, array($name, $price, $stock, $filename, $status_value));
 }
 
 //商品ステータスを変更し、値を返す
@@ -103,13 +105,13 @@ function update_item_status($db, $item_id, $status){
     UPDATE
       items
     SET
-      status = {$status}
+      status = ?
     WHERE
-      item_id = {$item_id}
+      item_id = ?
     LIMIT 1
   ";
   
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, array($status, $item_id));
 }
 
 //商品在庫数を変更し、値を返す
@@ -118,13 +120,13 @@ function update_item_stock($db, $item_id, $stock){
     UPDATE
       items
     SET
-      stock = {$stock}
+      stock = ?
     WHERE
-      item_id = {$item_id}
+      item_id = ?
     LIMIT 1
   ";
   
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, array($stock, $item_id));
 }
 
 //登録済み商品の削除。整合性が保たれていれば実行、保たれていなければ処理を戻す
@@ -149,11 +151,11 @@ function delete_item($db, $item_id){
     DELETE FROM
       items
     WHERE
-      item_id = {$item_id}
+      item_id = ?
     LIMIT 1
   ";
   
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, array($item_id));
 }
 
 

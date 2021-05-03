@@ -28,7 +28,9 @@ function get_user_carts($db, $user_id){
     WHERE
       carts.user_id = ?
   ";
+
   return fetch_all_query($db, $sql,array($user_id));
+
 }
 
 //カートへ追加された商品を表示
@@ -57,6 +59,7 @@ function get_user_cart($db, $user_id, $item_id){
   ";
 
   return fetch_query($db, $sql, array($user_id, $item_id));
+
 }
 
 //カート内に同じ商品がなければカートへ追加、同じ商品があれば数量を更新
@@ -83,7 +86,9 @@ function insert_cart($db, $user_id, $item_id, $amount = 1){
   return execute_query($db, $sql, array($item_id, $user_id, $amount));
 }
 
+
 //カート内の数量を更新
+
 function update_cart_amount($db, $cart_id, $amount){
   $sql = "
     UPDATE

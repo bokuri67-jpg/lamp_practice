@@ -1,6 +1,8 @@
 <?php
 //関数を定義
 
+
+
 function dd($var){
   var_dump($var);
   exit();
@@ -20,9 +22,11 @@ function get_get($name){
   return '';
 }
 
+
 //POSTで受け取ったとき、受け取った受け取った値を返す
+
 function get_post($name){
-  if(isset($_POST[$name]) === true){
+  if(isset($_POST[$name]) === true && $_SESSION['token'] === $_POST['token']){
     return $_POST[$name];
   };
   return '';
@@ -146,4 +150,19 @@ function is_valid_upload_image($image){
 //特殊文字を表示可能な形式に変換
 function h($str){
   return htmlspecialchars($str,ENT_QUOTES,'UTF-8');
+}
+
+// トークンの生成
+function get_csrf_token(){
+  $token = get_random_string(30);
+  set_session('csrf_token', $token);
+  return $token;
+}
+
+// トークンのチェック
+function is_valid_csrf_token($token){
+  if($token === '') {
+    return false;
+  }
+  return $token === get_session('csrf_token');
 }
