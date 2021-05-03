@@ -57,6 +57,7 @@ function get_open_items($db){
   return get_items($db, true);
 }
 
+//商品登録
 function regist_item($db, $name, $price, $stock, $status, $image){
   $filename = get_upload_filename($image);
   if(validate_item($name, $price, $stock, $filename, $status) === false){
@@ -65,6 +66,7 @@ function regist_item($db, $name, $price, $stock, $status, $image){
   return regist_item_transaction($db, $name, $price, $stock, $status, $image, $filename);
 }
 
+//トランザクション処理
 function regist_item_transaction($db, $name, $price, $stock, $status, $image, $filename){
   $db->beginTransaction();
   if(insert_item($db, $name, $price, $stock, $filename, $status) 
@@ -77,7 +79,9 @@ function regist_item_transaction($db, $name, $price, $stock, $status, $image, $f
   
 }
 
-//商品をDBへ登録(sqlインジェクション実装)
+
+//商品追加
+
 function insert_item($db, $name, $price, $stock, $filename, $status){
   $status_value = PERMITTED_ITEM_STATUSES[$status];
   $sql = "

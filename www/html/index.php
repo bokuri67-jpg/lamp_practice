@@ -1,8 +1,9 @@
 <?php
-//
+
 
 //iframeによるサイト読み込み防止
 header('X-FRAME-OPTIONS: DENY');
+
 
 // 定数ファイルを読み込み
 require_once '../conf/const.php';
@@ -21,9 +22,9 @@ if(is_logined() === false){
   redirect_to(LOGIN_URL);
 }
 
-//DB接続
+//DB情報を取得
 $db = get_db_connect();
-//ログインユーザー情報取得
+//ユーザー情報を取得
 $user = get_login_user($db);
 
 //商品情報を取得

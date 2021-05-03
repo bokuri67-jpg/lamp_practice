@@ -31,7 +31,7 @@ if(is_admin($user) === false){
   redirect_to(LOGIN_URL);
 }
 
-
+//商品情報を取得
 $items = get_all_items($db);
 
 //admin_viewファイルを読み込み
