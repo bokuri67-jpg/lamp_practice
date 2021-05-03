@@ -260,3 +260,45 @@ function get_order_history($db, $user_id){
 
   return fetch_all_query($db, $sql, array($user_id));
 }
+
+//購入履歴情報を取得(指定の一つの履歴情報)
+function get_one_order_history($db, $order_id){
+  $sql = "
+    SELECT 
+      order_history. order_id, 
+      order_history. order_date,
+      SUM(order_details. price * order_details. amount) as total
+    FROM 
+      order_history
+    JOIN 
+      order_details
+    ON 
+      order_history. order_id = order_details. order_id
+    WHERE
+      order_details.order_id = ?
+    GROUP BY 
+      order_id
+  ";
+
+  return fetch_all_query($db, $sql, array($order_id));
+}
+
+//管理者だった場合、すべての購入履歴情報を取得する
+function get_all_order_history($db){
+  $sql = "
+    SELECT 
+      order_history. order_id, 
+      order_history. order_date,
+      SUM(order_details. price * order_details. amount) as total
+    FROM 
+      order_history
+    JOIN 
+      order_details
+    ON 
+      order_history. order_id = order_details. order_id
+    GROUP BY 
+      order_id
+  ";
+
+  return fetch_all_query($db, $sql);
+}

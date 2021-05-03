@@ -24,7 +24,7 @@
                     <tr>
                         <td><?php print $history['order_id']; ?></td>
                         <td><?php print $history['order_date']; ?></td>
-                        <td><?php print $history['total']; ?> 円</td>
+                        <td><?php print number_format($history['total']); ?> 円</td>
                         <td>
                             <form method="POST" action="details.php">
                                 <input type="hidden" name="order_id" value="<?php print $history['order_id']; ?>">

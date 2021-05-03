@@ -19,8 +19,9 @@ $db = get_db_connect();
 $user = get_login_user($db);
 //order_idを取得
 $order_id = get_post('order_id');
-
-//購入履歴情報を取得
+//購入詳細情報を取得
 $details = get_order_details($db, $order_id);
+//該当の購入履歴情報を取得
+$order_historys = get_one_order_history($db, $order_id);
 
 include_once VIEW_PATH . '/details_view.php';
