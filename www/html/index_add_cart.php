@@ -21,11 +21,12 @@ session_start();
 if(is_logined() === false){
   redirect_to(LOGIN_URL);
 }
-
+//DB接続
 $db = get_db_connect();
+//ログインチェック
 $user = get_login_user($db);
 
-
+//ポストで受け取った値
 $item_id = get_post('item_id');
 
 //カートに商品を追加したとき、メッセージを表示する

@@ -21,10 +21,11 @@ session_start();
 if(is_logined() === false){
   redirect_to(LOGIN_URL);
 }
-
+//DB情報を取得
 $db = get_db_connect();
+//ユーザー情報を取得
 $user = get_login_user($db);
-
+//カート情報を取得
 $carts = get_user_carts($db, $user['user_id']);
 
 //購入できなかったとき、メッセージを表示し、カートページへリダイレクト
@@ -33,6 +34,7 @@ if(purchase_carts($db, $carts) === false){
   redirect_to(CART_URL);
 } 
 
+//購入商品合計の情報を取得
 $total_price = sum_carts($carts);
 
 //finish_viewファイルを読み込み
