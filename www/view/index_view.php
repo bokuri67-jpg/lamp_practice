@@ -41,14 +41,23 @@
       <?php } ?>
       </div>
     </div>
-
-      <?php foreach($rankings as $ranking) { ?>
-      <ul>
-        <li><img src="<?php print (IMAGE_PATH). $ranking['image']; ?>" class="item_image"></li>
-        <li><?php print $ranking['name']; ?></li>
-      </ul>
-      <?php } ?>
-
+    <h2>＜　売れ筋ランキング　〜TOP３〜　＞</h2>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>順位</th>
+          <th>商品画像</th>
+          <th>商品名</th>
+        </tr>
+      </thead>
+      <?php $i = 1; foreach($rankings as $ranking) :?>
+      <tr>
+        <td><?php print $i;?></td>
+        <td><img src="<?php print (IMAGE_PATH). $ranking['image']; ?>" class="item_image"></td>
+        <td><?php print $ranking['name']; ?></td>
+      </tr>
+      <?php $i++; endforeach; ?>
+    </table>
   </div>
   
 </body>
