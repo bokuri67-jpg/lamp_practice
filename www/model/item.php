@@ -228,3 +228,27 @@ function is_valid_item_status($status){
   }
   return $is_valid;
 }
+
+//ランキング(購入数順に上位３位まで)
+function get_ranking($db){
+  $sql = '
+    SELECT
+      order_details.item_id,
+      items.name,
+      items.image,
+      sum(order_details.amount) as total_amount
+    FROM
+      order_details
+    JOIN
+      items
+    ON
+      order_details.item_id = items.item_id
+    GROUP BY
+      item_id
+    ORDER BY
+      total_amount DESC
+    LIMIT	
+    3';
+
+  return fetch_all_query($db, $sql);
+}
